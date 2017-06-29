@@ -6,7 +6,7 @@ function showAddCompany(id) {
 	} else {
 		obj.style.visibility = "visible";
 	}
-},
+}
 
 function showResultName(str) {
     if (str == "") {
@@ -28,7 +28,7 @@ function showResultName(str) {
         xmlhttp.open("GET","livesearchemployee.php?q="+str,true);
         xmlhttp.send();
     }
-},
+}
 
 function showResult(str,b) {
     if (str == "") {
@@ -57,12 +57,12 @@ function showResult(str,b) {
         xmlhttp.open("GET","livesearch.php?q="+str,true);
         xmlhttp.send();
     }
-},
+}
 
 function setCompany(str){
 	document.getElementById("comp").value = str;
 	document.getElementById("comp2").value = str;	
-},
+}
 
 function setName(str){
 	document.getElementById("setName").value = str;
