@@ -1,18 +1,5 @@
 <?php 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "mycompany";
-	$emplTab = "employee";
-	$companyTab = "companies";
-	$workPeriodsTab = "periodsOfWork";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
+	include 'connect.php';
 
 	$sql = "INSERT INTO " . $companyTab . " (companyName, nipt, address)
 	VALUES ('" . $_POST["companyName"] . "', '"
@@ -30,5 +17,6 @@
 	echo "<br>"; 
 	echo $_POST["companyName"]; echo "<br>"; 
 	echo $_POST["nipt"]; echo "<br>"; 
-	echo $_POST["companyAddress"]; echo "<br>"; 
+	echo $_POST["companyAddress"]; echo "<br><br>";  
+	echo '<a style="color:#0000FF;font-size: 20px" onClick="javascript:history.back(1)">back</a>'; 
 ?> 

@@ -1,18 +1,5 @@
 <?php 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "mycompany";
-	$emplTab = "employee";
-	$companyTab = "companies";
-	$workPeriodsTab = "periodsOfWork";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
+	include 'connect.php';
 
 	$sql = "INSERT INTO " . $emplTab . " (name, surname, birthday, email, telephone, address, companyName, role)
 	VALUES ('" . $_POST["name"] . "', '"
@@ -23,21 +10,6 @@
 	 . $_POST["address"] . "', '" 
 	 . $_POST["currentCompany"] . "', '" 
 	 . $_POST["role"] ."'')";
-	/*
-	$sql = "INSERT INTO " . $companyTab . " (companyName,
-							nipt ,
-							address )		
-	VALUES ('google', 'nipt', 'adress')";
-	$sql = "INSERT INTO " . $emplTab . " (name,
-							surname,
-							birthday,
-							email,
-							telephone,
-							address,
-							companyName,
-							role)
-	VALUES ('John', 'Doe', '180891', 'john@example.com', '066241', 'street', 'google', 'admin')";
-*/
 	if ($conn->query($sql) === TRUE) {
 	    echo "New record created successfully";
 	} else {
@@ -47,12 +19,13 @@
 	$conn->close();
 
 	echo "<br>"; 
-	echo $_POST["name"]; 
-	echo $_POST["surname"]; 
-	echo $_POST["email"]; 
-	echo $_POST["telephone"];
-	echo $_POST["birthday"]; 
-	echo $_POST["address"]; 
-	echo $_POST["currentCompany"]; 
-	echo $_POST["role"];  
+	echo $_POST["name"]; echo "<br>"; 
+	echo $_POST["surname"]; echo "<br>"; 
+	echo $_POST["email"]; echo "<br>"; 
+	echo $_POST["telephone"];echo "<br>"; 
+	echo $_POST["birthday"]; echo "<br>"; 
+	echo $_POST["address"]; echo "<br>"; 
+	echo $_POST["currentCompany"]; echo "<br>"; 
+	echo $_POST["role"];echo "<br><br>"; ;  
+	echo '<a style="color:#0000FF;font-size: 20px" onClick="javascript:history.back(1)">back</a>'; 
 ?> 
