@@ -9,7 +9,7 @@
 	 . $_POST["telephone"] . "', '" 
 	 . $_POST["address"] . "', '" 
 	 . $_POST["currentCompany"] . "', '" 
-	 . $_POST["role"] ."'')";
+	 . $_POST["role"] ."')";
 	if ($conn->query($sql) === TRUE) {
 	    echo "New record created successfully";
 	} else {

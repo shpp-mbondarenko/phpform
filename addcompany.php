@@ -1,20 +1,15 @@
 <?php 
 	include 'connect.php';
 
-	$sql = "INSERT INTO " . $companyTab . " (companyName, nipt, address)
-	VALUES ('" . $_POST["companyName"] . "', '"
-	 . $_POST["nipt"] . "', '" 
-	 . $_POST["companyAddress"] ."')";
-	
-	if ($conn->query($sql) === TRUE) {
-	    echo "New record created successfully";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-
+	$stmt = mysqli_prepare($conn, "INSERT INTO " . $companyTab . " (companyName, nipt, address) VALUES (?, ?, ?)");
+	$companyName = $_POST["companyName"];
+	$nipt = $_POST["nipt"];
+	$address = $_POST["companyAddress"];	
+	mysqli_stmt_bind_param($stmt,'sss',$companyName, $nipt, $address);
+	mysqli_stmt_execute($stmt);
 	$conn->close();
 
-	echo "<br>"; 
+	echo "<p>Adding is successful</p><br>"; 
 	echo $_POST["companyName"]; echo "<br>"; 
 	echo $_POST["nipt"]; echo "<br>"; 
 	echo $_POST["companyAddress"]; echo "<br><br>";  
