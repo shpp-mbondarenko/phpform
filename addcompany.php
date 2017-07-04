@@ -14,4 +14,9 @@
 	echo $_POST["nipt"]; echo "<br>"; 
 	echo $_POST["companyAddress"]; echo "<br><br>";  
 	echo '<a style="color:#0000FF;font-size: 20px" onClick="javascript:history.back(1)">back</a>'; 
+	
+	function clearFromTags($string) {
+		$res = preg_replace("/[^a-zA-Z=_\s]/", '', $string);
+		return $res;
+	}
 ?> 

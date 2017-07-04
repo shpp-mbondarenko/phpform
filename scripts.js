@@ -6,6 +6,15 @@ function showAddCompany(id) {
 	} else {
 		obj.style.visibility = "visible";
 	}
+    if (id == "div3") {
+        obj = document.getElementById('div1').style.visibility = "hidden";
+        document.getElementById('div2').style.visibility = "hidden";
+    }
+    if (id == "div1") {
+        obj = document.getElementById('div3').style.visibility = "hidden";
+        document.getElementById('div2').style.visibility = "hidden";
+    }    
+   
 }
 
 function showResultName(str) {
@@ -61,9 +70,12 @@ function showResult(str,b) {
 
 function setCompany(str){
 	document.getElementById("comp").value = str;
-	document.getElementById("comp2").value = str;	
+	document.getElementById("comp2").value = str;
+    document.getElementById("txtHint").innerHTML = "";
+    document.getElementById("txtHint2").innerHTML = "";	
 }
 
 function setName(str){
 	document.getElementById("setName").value = str;
+    document.getElementById("nameHint").innerHTML = "";
 }
