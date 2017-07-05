@@ -79,3 +79,50 @@ function setName(str){
 	document.getElementById("setName").value = str;
     document.getElementById("nameHint").innerHTML = "";
 }
+
+function addEmployeeToDB() {
+
+    alert($("#name").val());
+
+    var name = $("#name").val();
+    var surname = $("#surname").val();
+    var birthday = $("#birthday").val();
+    var email = $("#email").val();
+    var telephone = $("#telephone").val();
+    var address = $("#address").val();
+    var comp = $("#comp").val();
+    var role = $("#role").val();
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 
+    'name='+ name + 
+    '&surname='+ surname + 
+    '&birthday='+ birthday + 
+    '&email='+ email + 
+    '&telephone='+ telephone + 
+    '&address='+ address + 
+    '&currentCompany='+ comp + 
+    '&role='+ role;
+   
+    // AJAX Code To Submit Form.
+    $.ajax({
+    type: "POST",
+    url: "addemployee2.php",
+    data: dataString,
+    cache: false,
+    success: function(result){
+        alert(result);
+    }
+    });
+   
+    return false;
+
+    // xmlhttp = new XMLHttpRequest();        
+    // xmlhttp.onreadystatechange = function() {                  
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("nameHint").innerHTML = this.responseText;
+    //     }                                           
+    // };
+    // xmlhttp.open("GET","livesearchemployee.php?q="+str,true);
+    // xmlhttp.send();
+   
+}
