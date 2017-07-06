@@ -16,7 +16,7 @@ function showAddCompany(id) {
     }    
    
 }
-
+//fast search employee
 function showResultName(str) {
     if (str == "") {
         document.getElementById("nameHint").innerHTML = "";
@@ -38,7 +38,7 @@ function showResultName(str) {
         xmlhttp.send();
     }
 }
-
+//searsh companies 
 function showResult(str,b) {
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
@@ -79,11 +79,8 @@ function setName(str){
 	document.getElementById("setName").value = str;
     document.getElementById("nameHint").innerHTML = "";
 }
-
+//add data about employee
 function addEmployeeToDB() {
-
-    alert($("#name").val());
-
     var name = $("#name").val();
     var surname = $("#surname").val();
     var birthday = $("#birthday").val();
@@ -92,7 +89,6 @@ function addEmployeeToDB() {
     var address = $("#address").val();
     var comp = $("#comp").val();
     var role = $("#role").val();
-    // Returns successful data submission message when the entered information is stored in database.
     var dataString = 
     'name='+ name + 
     '&surname='+ surname + 
@@ -106,7 +102,7 @@ function addEmployeeToDB() {
     // AJAX Code To Submit Form.
     $.ajax({
     type: "POST",
-    url: "addemployee2.php",
+    url: "addemployee.php",
     data: dataString,
     cache: false,
     success: function(result){
@@ -115,14 +111,56 @@ function addEmployeeToDB() {
     });
    
     return false;
+}
+//add data about company
+function addCompanyToDB() {
+    var companyName = $("#companyName").val();
+    var nipt = $("#nipt").val();
+    var companyAddress = $("#companyAddress").val();
 
-    // xmlhttp = new XMLHttpRequest();        
-    // xmlhttp.onreadystatechange = function() {                  
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         document.getElementById("nameHint").innerHTML = this.responseText;
-    //     }                                           
-    // };
-    // xmlhttp.open("GET","livesearchemployee.php?q="+str,true);
-    // xmlhttp.send();
+    var dataString = 
+    'companyName='+ companyName + 
+    '&nipt='+ nipt + 
+    '&companyAddress='+ companyAddress;
+    if(companyName == '' || nipt == '' || companyAddress == '') {
+        alert("Please Fill All Fields");
+    } else {
+    // AJAX Code To Submit Form.
+        $.ajax({
+        type: "POST",
+        url: "addcompany.php",
+        data: dataString,
+        cache: false,
+        success: function(result){
+            alert(result);
+        }
+        });
+    }   
+    return false;
+}
+//add data to periods of work
+function addPeriodsToDB() {
+    var setName = $("#setName").val();
+    var comp2 = $("#comp2").val();
+    var startDate = $("#startDate").val();
+    var endDate = $("#endDate").val();
+    
+    var dataString = 
+    'employee='+ setName + 
+    '&companyNamePeriods='+ comp2 + 
+    '&startDate='+ startDate +     
+    '&endDate='+ endDate;
    
+    // AJAX Code To Submit Form.
+    $.ajax({
+    type: "POST",
+    url: "addperiods.php",
+    data: dataString,
+    cache: false,
+    success: function(result){
+        alert(result);
+    }
+    });
+   
+    return false;
 }
