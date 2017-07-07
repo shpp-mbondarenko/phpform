@@ -25,7 +25,7 @@
 					idEmp INT(6) NOT NULL REFERENCES ' . $emplTab . ' (idEmp),
 					idComp INT(6) NOT NULL REFERENCES ' . $companyTab . ' (idComp),
 					startDate DATE NOT NULL,
-					endDate DATE NOT NULL							
+					endDate DATE							
 					)';
 			if ($conn->query($sql) === TRUE) {
 				echo "Table " . $workPeriodsTab . " created successfully2<br>";

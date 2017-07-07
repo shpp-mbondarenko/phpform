@@ -37,10 +37,28 @@
 		}	
 //add employee
 	if ($conn->query($sql) === TRUE) {
-	    echo "New record created successfully";
+	    echo "New record in employee created successfully";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}
+	//add new record to periodsOfwork table
+	$today =  date("y-m-d",mktime(0, 0, 0, date("m")  , date("d"), date("Y"))); 
+	echo "today is " . $today;
+	//find user id that has been just created
+	$sql = "SELECT idEmp FROM " . $emplTab . " ORDER BY idEmp DESC LIMIT 1";
+	$idEmp = mysqli_fetch_assoc(mysqli_query($conn,$sql))['idEmp'];
+	echo "idEmp is " . $idEmp;
+	 //////////////////////////////////////
+	$sql = "INSERT INTO " . $workPeriodsTab . " (idEmp, idComp, startDate)
+		VALUES ('" . $idEmp . "', '"
+		 . $id . "', '" 		  
+		 . $today ."')";
+	if ($conn->query($sql) === TRUE) {
+	    echo "New record in periodsofwork created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
 
 	$conn->close();
 
